@@ -1,31 +1,22 @@
-import java.util.*;
-import java.util.stream.Collectors;
+class BogieTest {
+    private final String name;
+    private String type;
 
-public class TrainConsistManagementApp {
+    public BogieTest (String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
 
-    public static void main(String[] args) {
+    public String getName() {
+        return name;
+    }
 
-        // Step 1: Create list of bogies
-        List<Bogie> bogies = new ArrayList<>();
-        bogies.add(new Bogie("Sleeper"));
-        bogies.add(new Bogie("AC Chair"));
-        bogies.add(new Bogie("Sleeper"));
-        bogies.add(new Bogie("First Class"));
-        bogies.add(new Bogie("AC Chair"));
+    public String getType() {
+        return type;
+    }
 
-        // Step 2: Convert to stream and group
-        Map<String, List<Bogie>> groupedBogies =
-                bogies.stream()
-                        .collect(Collectors.groupingBy(Bogie::getType));
-
-        // Step 3: Display grouped result
-        System.out.println("Grouped Bogies:");
-        groupedBogies.forEach((type, list) -> {
-            System.out.println(type + " -> " + list);
-        });
-
-        // Step 4: Verify original list unchanged
-        System.out.println("\nOriginal Bogie List:");
-        bogies.forEach(System.out::println);
+    @Override
+    public String toString() {
+        return name + " (" + type + ")";
     }
 }
